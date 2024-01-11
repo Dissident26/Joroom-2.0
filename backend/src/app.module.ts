@@ -11,15 +11,13 @@ import { AppService } from './app.service';
       isGlobal: true,
     }),
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'postgres',
       host: process.env.HOST || 'localhost',
       port: parseInt(process.env.PORT || ''),
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [
-        // __dirname + '/../**/*.entity{.ts,.js}',
-      ],
+      entities: ['./entities/*.entity{.ts}'],
     }),
   ],
   controllers: [AppController],
