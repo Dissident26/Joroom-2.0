@@ -8,7 +8,6 @@ import { AppService } from './app.service';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      ignoreEnvFile: true,
     }),
   ],
   controllers: [AppController],
