@@ -8,6 +8,6 @@ async function bootstrap() {
 
   applySwagger(app);
 
-  await app.listen(parseInt(process.env.PORT || ''));
+  await app.listen(parseInt(process.env.APP_PORT || ''));
 }
 bootstrap();

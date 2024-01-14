@@ -26,6 +26,7 @@ export class Post {
   tags: Tag[];
 
   @OneToMany(() => Comment, (comment) => comment.post)
+  @JoinTable()
   comments: Comment[];
 
   @CreateDateColumn()

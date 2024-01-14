@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, JoinColumn, OneToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, JoinColumn, OneToOne, ManyToOne } from 'typeorm';
 
 import { Post } from './post.entity';
 import { User } from './user.entity';
@@ -16,7 +16,7 @@ export class Comment {
   @JoinColumn()
   parent: Comment | null = null;
 
-  @OneToOne(() => Post)
+  @ManyToOne(() => Post)
   @JoinColumn()
   post: Post;
 
