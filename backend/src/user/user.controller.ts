@@ -6,31 +6,31 @@ import { User } from '../entities/user.entity';
 import { Post } from '../entities/post.entity';
 import { Comment } from '../entities/comment.entity';
 
-@Controller()
+@Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('/user')
+  @Get()
   findAll(): Promise<User[]> {
     return this.userService.findAll();
   }
 
-  @Get('/user/:id')
+  @Get('/:id')
   findOne(@Param('id') id: string): Promise<User | null> {
     return this.userService.findOne(parseInt(id));
   }
 
-  @Delete('/user/:id')
+  @Delete('/:id')
   async delete(@Param('id') id: string): Promise<void> {
     await this.userService.delete(parseInt(id));
   }
 
-  @Get('/user/:id/posts')
+  @Get('/:id/posts')
   findAllPostsByUserId(@Param('id') id: string): Promise<Post[] | null> {
     return this.userService.findAllPostsByUserId(parseInt(id));
   }
 
-  @Get('/user/:id/comments')
+  @Get('/:id/comments')
   findAllCommentsByUserId(@Param('id') id: string): Promise<Comment[] | null> {
     return this.userService.findAllCommentsByUserId(parseInt(id));
   }
