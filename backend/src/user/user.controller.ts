@@ -1,7 +1,10 @@
 import { Get, Controller, Param, Delete } from '@nestjs/common';
 
 import { UserService } from './user.service';
+
 import { User } from '../entities/user.entity';
+import { Post } from '../entities/post.entity';
+import { Comment } from '../entities/comment.entity';
 
 @Controller()
 export class UserController {
@@ -20,5 +23,15 @@ export class UserController {
   @Delete('/user/:id')
   async delete(@Param('id') id: string): Promise<void> {
     await this.userService.delete(parseInt(id));
+  }
+
+  @Get('/user/:id/posts')
+  findAllPostsByUserId(@Param('id') id: string): Promise<Post[] | null> {
+    return this.userService.findAllPostsByUserId(parseInt(id));
+  }
+
+  @Get('/user/:id/comments')
+  findAllCommentsByUserId(@Param('id') id: string): Promise<Comment[] | null> {
+    return this.userService.findAllCommentsByUserId(parseInt(id));
   }
 }
