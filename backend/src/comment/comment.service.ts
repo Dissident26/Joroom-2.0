@@ -11,18 +11,34 @@ export class CommentService {
     private commentRepository: Repository<Comment>,
   ) {}
 
-  findAllByPostId(postId: number): Promise<Comment[]> {
+  findAllByPostId(id: number): Promise<Comment[]> {
     return this.commentRepository.find({
-      where: {
-        post: {
-          id: postId,
+      where: { post: { id } },
+      select: {
+        user: {
+          id: true,
+          name: true,
+          isActive: true,
+          imageUrl: true,
         },
+        post: { id: true },
       },
     });
   }
 
   findOne(id: number): Promise<Comment | null> {
-    return this.commentRepository.findOneBy({ id });
+    return this.commentRepository.findOne({
+      where: { id },
+      select: {
+        user: {
+          id: true,
+          name: true,
+          isActive: true,
+          imageUrl: true,
+        },
+        post: { id: true },
+      },
+    });
   }
 
   async delete(id: number): Promise<void> {

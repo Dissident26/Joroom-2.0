@@ -18,42 +18,38 @@ export class UserService {
   }
 
   findOne(id: number): Promise<User | null> {
-    return this.userRepository.findOneBy({ id });
+    return this.userRepository.findOne({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        isActive: true,
+        imageUrl: true,
+      },
+    });
   }
 
   async delete(id: number): Promise<void> {
     await this.userRepository.delete(id);
   }
 
-  async findAllPostsByUserId(userId: number): Promise<Post[]> {
+  async findAllPostsByUserId(id: number): Promise<Post[]> {
     const user = await this.userRepository.findOne({
       where: {
-        posts: {
-          user: {
-            id: userId,
-          },
-        },
+        posts: { user: { id } },
       },
-      select: {
-        posts: true,
-      },
+      select: { posts: true },
     });
 
     return user?.posts || [];
   }
 
-  async findAllCommentsByUserId(userId: number): Promise<Comment[]> {
+  async findAllCommentsByUserId(id: number): Promise<Comment[]> {
     const user = await this.userRepository.findOne({
       where: {
-        comments: {
-          user: {
-            id: userId,
-          },
-        },
+        comments: { user: { id } },
       },
-      select: {
-        comments: true,
-      },
+      select: { comments: true },
     });
 
     return user?.comments || [];
