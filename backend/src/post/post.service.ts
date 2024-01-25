@@ -19,7 +19,7 @@ export class PostService {
     return this.postRepository.findOneBy({ id });
   }
 
-  async remove(id: number): Promise<void> {
+  async delete(id: number): Promise<void> {
     await this.postRepository.delete(id);
   }
 }
