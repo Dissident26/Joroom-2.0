@@ -1,7 +1,6 @@
 import { Get, Controller, Param, Delete } from '@nestjs/common';
 
 import { UserService } from './user.service';
-
 import { User } from '../entities/user.entity';
 import { Post } from '../entities/post.entity';
 import { Comment } from '../entities/comment.entity';

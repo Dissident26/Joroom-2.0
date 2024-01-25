@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
+import { TagModule } from './tag/tag.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { CommentModule } from './comment/comment.module';
     UserModule,
     PostModule,
     CommentModule,
+    TagModule,
   ],
   controllers: [AppController],
   providers: [AppService],
