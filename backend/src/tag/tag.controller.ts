@@ -2,7 +2,7 @@ import { Get, Controller, Param, Delete } from '@nestjs/common';
 
 import { TagService } from './tag.service';
 
-import { Tag } from '../entities/tag.entity';
+import { Tag } from '../database/entities';
 
 @Controller('tag')
 export class TagController {

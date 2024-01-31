@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { TagService } from './tag.service';
 import { TagController } from './tag.controller';
-import { Tag } from 'src/entities/tag.entity';
+import { Tag } from '../database/entities';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Tag])],
