@@ -36,7 +36,7 @@ export class UserService {
       where: {
         posts: { user: { id } },
       },
-      select: { posts: true },
+      relations: ['posts', 'posts.tags'],
     });
 
     return user?.posts || [];
@@ -47,7 +47,7 @@ export class UserService {
       where: {
         comments: { user: { id } },
       },
-      select: { comments: true },
+      relations: ['comments', 'comments.post'],
     });
 
     return user?.comments || [];

@@ -21,12 +21,10 @@ export default class MainSeeder implements Seeder {
       Array(200)
         .fill('')
         .map(async () => {
-          const post = await postsFactory.make({
+          return postsFactory.make({
             user: faker.helpers.arrayElement(users),
             tags: faker.helpers.arrayElements(tags, { min: 2, max: 10 }),
           });
-
-          return post;
         }),
     );
 
