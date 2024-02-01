@@ -21,7 +21,7 @@ import { TagModule } from './tag/tag.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [__dirname + '/entities/*.entity.{js,ts}'],
+      entities: [__dirname + '/database/entities/*.entity.{js,ts}'],
       synchronize: true, //use only in dev mode
     }),
     UserModule,
