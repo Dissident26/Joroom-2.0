@@ -21,8 +21,7 @@ export class Post {
   @Column('text')
   content: string;
 
-  @ManyToMany(() => Tag)
-  @JoinTable()
+  @ManyToMany(() => Tag, (tag) => tag.posts)
   tags: Tag[];
 
   @OneToMany(() => Comment, (comment) => comment.post)

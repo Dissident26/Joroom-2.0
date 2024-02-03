@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Tag } from '../database/entities';
+import { Post, Tag } from '../database/entities';
 
 @Injectable()
 export class TagService {
@@ -21,5 +21,17 @@ export class TagService {
 
   async delete(id: number): Promise<void> {
     await this.tagRepository.delete(id);
+  }
+
+  async findAllPostsByTagId(id: number): Promise<Post[]> {
+    const tag = await this.tagRepository.findOne({
+      where: { id },
+      select: { posts: true },
+      relations: ['posts', 'posts.user', 'posts.tags'],
+    });
+
+    console.log(tag);
+
+    return tag?.posts || [];
   }
 }
