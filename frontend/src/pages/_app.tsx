@@ -1,7 +1,19 @@
+import type { ReactElement, ReactNode } from 'react'
+import type { NextPage } from 'next'
+import type { AppProps } from 'next/app'
+
 import { RootLayout } from "@/components"
 
-const App = ({ Component, pageProps }: any) => {
-    const getLayout = Component.getLayout ?? ((page: any) => page)
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+    const getLayout = Component.getLayout ?? ((page) => page)
 
    return (
     <RootLayout>
@@ -11,3 +23,5 @@ const App = ({ Component, pageProps }: any) => {
 }
 
 export default App;
+
+
