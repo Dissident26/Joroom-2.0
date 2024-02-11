@@ -1,7 +1,24 @@
-import { User } from "@/components";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
-const UserPage = () => {
-    return <User />;
+import { UserMock, getUserById } from "@/api";
+import { UserDetails } from "@/components";
+
+
+interface IUserDetailsPageProps {
+    user: UserMock;
+}
+
+export const getServerSideProps = (async ({ params }) => {
+    const id = params?.id;
+    const user = await getUserById(Number(id));
+
+    return { props: { user } }
+  }) satisfies  GetServerSideProps<IUserDetailsPageProps>;
+
+
+
+const UserDetailsPage = ({ user }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+    return <UserDetails user={user} />;
 };
 
-export default UserPage
+export default UserDetailsPage;

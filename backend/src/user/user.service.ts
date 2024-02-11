@@ -23,6 +23,8 @@ export class UserService {
         name: true,
         isActive: true,
         imageUrl: true,
+        created_at: true,
+        description: true,
       },
     });
   }

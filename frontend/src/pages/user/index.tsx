@@ -15,7 +15,7 @@ export const getServerSideProps = (async () => {
   }) satisfies  GetServerSideProps<IUserListPageProps>;
 
 const UserListPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    return <UserList data={data} />;
+    return <UserList users={data} />;
 };
 
 export default UserListPage;
