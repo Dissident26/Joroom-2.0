@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    gap: 1rem;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+}

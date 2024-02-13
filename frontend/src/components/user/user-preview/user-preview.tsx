@@ -7,13 +7,11 @@ interface IUserPreviewProps {
     user: UserMock
 }
 
+import styles from './styles.module.css'
+
 export const UserPreview = ({ user }: IUserPreviewProps) => {
     return (
-    <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '5px',
-    }}>
+    <div className={styles.container}>
         <Image
             src={user.imageUrl}
             width={50}
