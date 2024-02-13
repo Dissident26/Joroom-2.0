@@ -1,7 +1,7 @@
-import { UserMock, api, endpoints } from "@/api";
+import { UserMock, api, endpoints } from '@/api';
 
 export const getUserList = async () => {
-    const { data } = await api.get<UserMock[]>(endpoints.user.list)
+  const { data } = await api.get<UserMock[]>(endpoints.user.list);
 
-    return data;
-}
+  return data;
+};
