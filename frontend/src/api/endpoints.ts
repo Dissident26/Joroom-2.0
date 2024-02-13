@@ -7,11 +7,9 @@ export const endpoints = {
     getCommentsByUserId: (id: number) => `/user/${id}/comments`,
   },
   post: {
-    list: {
-      list: '/post',
-      getById: (id: number) => `/post/${id}`,
-      getCommentsByPostId: (id: number) => `/post/${id}/comments`,
-    },
+    list: '/post',
+    getById: (id: number) => `/post/${id}`,
+    getCommentsByPostId: (id: number) => `/post/${id}/comments`,
   },
   comment: {
     getById: (id: number) => `/comment/${id}`,
