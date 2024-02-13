@@ -1,6 +1,7 @@
 .container {
     display: flex;
     gap: 1rem;
+    padding: 1rem;
 }
 
 .about {
@@ -12,4 +13,10 @@
 .checkbox {
     display: flex;
     align-items: center;
+}
+
+.postContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
