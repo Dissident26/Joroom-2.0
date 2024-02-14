@@ -4,6 +4,7 @@ import { PostMock, endpoints } from '@/api';
 import { UserPreview } from '@/components/user/user-preview';
 
 import styles from './styles.module.css';
+import { messages } from '@/messages';
 
 interface IPostPreviewProps {
   post: PostMock;
@@ -25,6 +26,7 @@ export const PostPreview = ({ post }: IPostPreviewProps) => {
       <div className={styles.footer}>
         <button>GET COMMENTS!!!</button>
         <div>{new Date(post.created_at).toLocaleString()}</div>
+        <Link href={endpoints.post.getById(post.id)}>{messages.link}</Link>
       </div>
     </div>
   );
