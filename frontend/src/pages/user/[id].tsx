@@ -1,17 +1,19 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import { PostMock, UserMock, getPostsByUserId, getUserById } from '@/api';
+import { getPostsByUserId, getUserById } from '@/api';
 import { UserDetails } from '@/components';
+import { PostDto, UserDto } from '@/types';
 
 interface IUserDetailsPageProps {
-  user: UserMock;
-  posts: PostMock[];
+  user: UserDto;
+  posts: PostDto[];
 }
 
 export const getServerSideProps = (async ({ params }) => {
-  const id = params?.id;
-  const user = await getUserById(Number(id));
-  const posts = await getPostsByUserId(Number(id));
+  const id = params?.id as string;
+
+  const user = await getUserById(id);
+  const posts = await getPostsByUserId(id);
 
   return { props: { user, posts } };
 }) satisfies GetServerSideProps<IUserDetailsPageProps>;

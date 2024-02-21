@@ -1,15 +1,17 @@
 import Link from 'next/link';
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
 
-import { CommentMock, PostMock, endpoints } from '@/api';
-import { UserPreview } from '@/components/user/user-preview';
+import { endpoints } from '@/api';
 
 import styles from './styles.module.css';
+
 import { messages } from '@/messages';
+import { CommentDto, PostDto } from '@/types';
+import { UserPreview } from '@/components/user/user-preview';
 
 interface IPostPreviewProps {
-  post: PostMock;
-  comments: CommentMock[];
+  post: PostDto;
+  comments: CommentDto[];
 }
 
 export const PostPreview = ({ post, comments }: IPostPreviewProps) => {

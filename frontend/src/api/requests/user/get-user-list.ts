@@ -1,7 +1,8 @@
-import { UserMock, api, endpoints } from '@/api';
+import { api } from '@/api';
+import { UserDto } from '@/types';
 
-export const getUserList = async () => {
-  const { data } = await api.get<UserMock[]>(endpoints.user.list);
+export const getUserList = async (): Promise<UserDto[]> => {
+  const { data } = await api.user.findAll();
 
   return data;
 };

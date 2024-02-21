@@ -1,8 +1,8 @@
-import { api, endpoints } from '@/api';
-import { PostMock } from '..';
+import { api } from '@/api';
+import { PostDto } from '@/types';
 
-export const getPostsById = async (id: number) => {
-  const { data } = await api.get<PostMock>(endpoints.post.getById(id));
+export const getPostsById = async (id: string): Promise<PostDto> => {
+  const { data } = await api.post.findOne(id);
 
   return data;
 };

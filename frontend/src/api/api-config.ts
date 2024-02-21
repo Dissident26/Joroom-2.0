@@ -1,5 +1,5 @@
-import axios from 'axios';
+import { Api } from '../types';
 
-export const api = axios.create({
+export const api = new Api({
   baseURL: process.env.BASE_API_URL,
 });

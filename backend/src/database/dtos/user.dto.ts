@@ -36,10 +36,10 @@ export class UserDto {
   })
   isActive: boolean;
 
-  @ApiProperty({ type: () => Array<PostDto> })
+  @ApiProperty({ type: () => PostDto, isArray: true })
   posts: PostDto[];
 
-  @ApiProperty({ type: () => Array<CommentDto> })
+  @ApiProperty({ type: () => CommentDto, isArray: true })
   comments: CommentDto[];
 
   @ApiProperty({ type: Date })

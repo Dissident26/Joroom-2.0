@@ -22,10 +22,10 @@ export class PostDto {
   })
   content: string;
 
-  @ApiProperty({ type: () => Array<TagDto> })
+  @ApiProperty({ type: () => TagDto, isArray: true })
   tags: TagDto[];
 
-  @ApiProperty({ type: () => Array<CommentDto> })
+  @ApiProperty({ type: () => CommentDto, isArray: true })
   comments: CommentDto[];
 
   @ApiProperty({ type: Date })

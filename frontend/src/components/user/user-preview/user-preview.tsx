@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { UserMock, endpoints } from '@/api';
+import { endpoints } from '@/api';
 
 interface IUserPreviewProps {
-  user: UserMock;
+  user: UserDto;
 }
 
 import styles from './styles.module.css';
+import { UserDto } from '@/types';
 
 const IMAGE_SIZE = 50;
 

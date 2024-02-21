@@ -1,7 +1,8 @@
-import { CommentMock, api, endpoints } from '@/api';
+import { api } from '@/api';
+import { CommentDto } from '@/types';
 
-export const getCommentsByPostId = async (id: number) => {
-  const { data } = await api.get<CommentMock[]>(endpoints.post.getCommentsByPostId(id));
+export const getCommentsByPostId = async (postId: string): Promise<CommentDto[]> => {
+  const { data } = await api.post.findaAllById(postId);
 
   return data;
 };
