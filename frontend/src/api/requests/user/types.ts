@@ -21,3 +21,11 @@ export interface PostMock {
   tags: TagMock[];
   created_at: Date;
 }
+
+export interface CommentMock {
+  parent: number | null;
+  id: number;
+  content: string;
+  created_at: Date;
+  user: UserMock;
+}

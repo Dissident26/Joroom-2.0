@@ -11,7 +11,7 @@ export const PostList = ({ posts }: IPostListProps) => {
   return (
     <div className={styles.postContainer}>
       {posts.map((post) => (
-        <PostPreview post={post} />
+        <PostPreview key={post.id} post={post} />
       ))}
     </div>
   );

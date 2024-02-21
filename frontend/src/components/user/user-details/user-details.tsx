@@ -30,6 +30,7 @@ export const UserDetails = ({ user, posts }: iUserDetailsProps) => {
       </div>
       <div className={styles.postContainer}>
         {posts.map((post) => (
+          //fetch post comments????
           <PostPreview post={post} />
         ))}
       </div>
