@@ -3,4 +3,5 @@ export const messages = {
   posts: 'Posts',
   tags: 'Tags',
   link: 'Link',
+  comments: 'Comments',
 };

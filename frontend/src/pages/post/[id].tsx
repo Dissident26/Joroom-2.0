@@ -16,8 +16,8 @@ export const getServerSideProps = (async ({ params }) => {
   return { props: { post, comments } };
 }) satisfies GetServerSideProps<IPostDetailsPageProps>;
 
-const UserDetailsPage = ({ post, comments }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <PostPreview post={post} comments={comments} />;
+const PostDetailsPage = ({ post }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  return <PostPreview post={post} isCommentsInitiallyVisible />;
 };
 
-export default UserDetailsPage;
+export default PostDetailsPage;

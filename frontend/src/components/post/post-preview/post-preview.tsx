@@ -8,13 +8,15 @@ import styles from './styles.module.css';
 import { messages } from '@/messages';
 import { PostDto } from '@/types';
 import { UserPreview } from '@/components/user/user-preview';
+import { ShowCommentsButton } from './show-comments-button';
 
 interface IPostPreviewProps {
   post: PostDto;
+  isCommentsInitiallyVisible?: boolean;
 }
 
-export const PostPreview = ({ post }: IPostPreviewProps) => {
-  const [isCommentsVisible, setIsCommentVisible] = useState(false);
+export const PostPreview = ({ post, isCommentsInitiallyVisible = false }: IPostPreviewProps) => {
+  const [isCommentsVisible, setIsCommentVisible] = useState(isCommentsInitiallyVisible);
 
   return (
     <div>
@@ -29,12 +31,12 @@ export const PostPreview = ({ post }: IPostPreviewProps) => {
       <h3>{post.title}</h3>
       <p>{post.content}</p>
       <div className={styles.footer}>
-        <button onClick={() => setIsCommentVisible((prev) => !prev)}>GET COMMENTS!!!</button>
+        <ShowCommentsButton onClick={() => setIsCommentVisible((prev) => !prev)} isActive={isCommentsVisible} />
         <div>{new Date(post.created_at).toLocaleString()}</div>
         <Link href={endpoints.post.getById(post.id)}>{messages.link}</Link>
       </div>
       {isCommentsVisible && (
-        <div>
+        <div className={styles.comments}>
           {post.comments.map((comment, i) => (
             <div key={i}>
               <UserPreview user={comment.user} />
