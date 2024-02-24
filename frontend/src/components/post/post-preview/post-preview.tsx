@@ -6,15 +6,14 @@ import { endpoints } from '@/api';
 import styles from './styles.module.css';
 
 import { messages } from '@/messages';
-import { CommentDto, PostDto } from '@/types';
+import { PostDto } from '@/types';
 import { UserPreview } from '@/components/user/user-preview';
 
 interface IPostPreviewProps {
   post: PostDto;
-  comments: CommentDto[];
 }
 
-export const PostPreview = ({ post, comments }: IPostPreviewProps) => {
+export const PostPreview = ({ post }: IPostPreviewProps) => {
   const [isCommentsVisible, setIsCommentVisible] = useState(false);
 
   return (
@@ -36,7 +35,7 @@ export const PostPreview = ({ post, comments }: IPostPreviewProps) => {
       </div>
       {isCommentsVisible && (
         <div>
-          {comments.map((comment, i) => (
+          {post.comments.map((comment, i) => (
             <div key={i}>
               <UserPreview user={comment.user} />
               <div>{comment.content}</div>

@@ -38,7 +38,7 @@ export class UserService {
       where: {
         posts: { user: { id } },
       },
-      relations: ['posts', 'posts.tags', 'posts.user'],
+      relations: ['posts', 'posts.tags', 'posts.user', 'posts.comments', 'posts.comments.user'],
     });
 
     return user?.posts || [];

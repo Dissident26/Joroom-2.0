@@ -13,14 +13,14 @@ export class PostService {
 
   findAll(): Promise<Post[]> {
     return this.postRepository.find({
-      relations: ['user', 'tags'],
+      relations: ['user', 'tags', 'comments', 'comments.user'],
     });
   }
 
   findOne(id: number): Promise<Post | null> {
     return this.postRepository.findOne({
       where: { id },
-      relations: ['user', 'tags'],
+      relations: ['user', 'tags', 'comments', 'comments.user'],
     });
   }
 
