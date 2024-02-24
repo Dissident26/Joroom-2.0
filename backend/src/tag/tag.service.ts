@@ -27,7 +27,7 @@ export class TagService {
     const tag = await this.tagRepository.findOne({
       where: { id },
       select: { posts: true },
-      relations: ['posts', 'posts.user', 'posts.tags'],
+      relations: ['posts', 'posts.user', 'posts.tags', 'posts.comments', 'posts.comments.user'],
     });
 
     console.log(tag);
