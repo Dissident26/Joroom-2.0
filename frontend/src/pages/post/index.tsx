@@ -1,10 +1,11 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import { PostMock, getPostList } from '@/api';
+import { getPostList } from '@/api';
 import { PostList } from '@/components';
+import { PostDto } from '@/types';
 
 interface IPostListPageProps {
-  data: PostMock[];
+  data: PostDto[];
 }
 
 export const getServerSideProps = (async () => {

@@ -1,8 +1,8 @@
-import { UserMock } from '@/api';
+import { UserDto } from '@/types';
 import { UserPreview } from '../user-preview';
 
 interface IUserListPageProps {
-  users: UserMock[];
+  users: UserDto[];
 }
 
 export const UserList = ({ users }: IUserListPageProps) => {

@@ -1,13 +1,13 @@
 import Image from 'next/image';
 
-import { UserMock, PostMock } from '@/api';
+import { UserDto, PostDto } from '@/types';
 
 import styles from './styles.module.css';
 import { PostPreview } from '@/components';
 
 interface iUserDetailsProps {
-  user: UserMock;
-  posts: PostMock[];
+  user: UserDto;
+  posts: PostDto[];
 }
 
 const IMAGE_SIZE = 150;

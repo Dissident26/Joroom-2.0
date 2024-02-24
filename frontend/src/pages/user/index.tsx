@@ -1,10 +1,11 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import { UserMock, getUserList } from '@/api';
+import { getUserList } from '@/api';
 import { UserList } from '@/components';
+import { UserDto } from '@/types';
 
 interface IUserListPageProps {
-  data: UserMock[];
+  data: UserDto[];
 }
 
 export const getServerSideProps = (async () => {

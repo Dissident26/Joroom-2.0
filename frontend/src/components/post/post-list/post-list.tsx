@@ -1,10 +1,10 @@
-import { PostMock } from '@/api';
+import { PostDto } from '@/types';
 import { PostPreview } from '..';
 
 import styles from './styles.module.css';
 
 interface IPostListProps {
-  posts: PostMock[];
+  posts: PostDto[];
 }
 
 export const PostList = ({ posts }: IPostListProps) => {
