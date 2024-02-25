@@ -9,7 +9,7 @@ interface IPostDetailsPageProps {
 }
 
 export const getServerSideProps = (async ({ params }) => {
-  const id = params?.id;
+  const id = params?.id as string;
   const post = await getPostsById(id);
   const comments = await getCommentsByPostId(id);
 
