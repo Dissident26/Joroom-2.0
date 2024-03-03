@@ -426,4 +426,47 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         ...params,
       }),
   };
+  auth = {
+    /**
+     * No description
+     *
+     * @tags Auth
+     * @name SignUp
+     * @request POST:/auth/sign-up
+     */
+    signUp: (params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/auth/sign-up`,
+        method: 'POST',
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Auth
+     * @name SignIn
+     * @request POST:/auth/sign-in
+     */
+    signIn: (params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/auth/sign-in`,
+        method: 'POST',
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Auth
+     * @name SignOut
+     * @request POST:/auth/sign-out
+     */
+    signOut: (params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/auth/sign-out`,
+        method: 'POST',
+        ...params,
+      }),
+  };
 }

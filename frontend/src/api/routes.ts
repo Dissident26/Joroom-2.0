@@ -1,5 +1,9 @@
-export const endpoints = {
+export const routes = {
   root: '/',
+  auth: {
+    signUp: '/auth/sign-up',
+    signIn: '/auth/sign-in',
+  },
   user: {
     list: '/user',
     getById: (id: number) => `/user/${id}`,

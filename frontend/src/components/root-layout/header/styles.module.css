@@ -1,8 +1,14 @@
 .list {
     display: flex;
     gap: 1rem;
+    padding: 0;
 }
 
 .list li {
     list-style-type: none;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
 }

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { endpoints } from '@/api';
+import { routes } from '@/api';
 
 import styles from './styles.module.css';
 
@@ -24,7 +24,7 @@ export const PostPreview = ({ post, isCommentsInitiallyVisible = false }: IPostP
       <ul className={styles.list}>
         {post.tags.map(({ id, content }, i) => (
           <li key={i}>
-            <Link href={endpoints.tag.getById(id)}>{content}</Link>
+            <Link href={routes.tag.getById(id)}>{content}</Link>
           </li>
         ))}
       </ul>
@@ -33,7 +33,7 @@ export const PostPreview = ({ post, isCommentsInitiallyVisible = false }: IPostP
       <div className={styles.footer}>
         <ShowCommentsButton onClick={() => setIsCommentVisible((prev) => !prev)} isActive={isCommentsVisible} count={post.comments.length} />
         <div>{new Date(post.created_at).toLocaleString()}</div>
-        <Link href={endpoints.post.getById(post.id)}>{messages.link}</Link>
+        <Link href={routes.post.getById(post.id)}>{messages.link}</Link>
       </div>
       {isCommentsVisible && (
         <div className={styles.comments}>
