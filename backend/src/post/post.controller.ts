@@ -19,17 +19,17 @@ export class PostController {
   @Get('/:id')
   @ApiOkResponse({ type: PostDto })
   findOne(@Param('id') id: string): Promise<Post | null> {
-    return this.postService.findOne(parseInt(id));
+    return this.postService.findOne(Number(id));
   }
 
   @Get('/:id/comments')
   @ApiOkResponse({ type: CommentDto, isArray: true })
   findaAllById(@Param('id') id: string): Promise<Comment[]> {
-    return this.postService.findAllCommentsByPostId(parseInt(id));
+    return this.postService.findAllCommentsByPostId(Number(id));
   }
 
   @Delete('/:id')
   async delete(@Param('id') id: string): Promise<void> {
-    return this.postService.delete(parseInt(id));
+    return this.postService.delete(Number(id));
   }
 }

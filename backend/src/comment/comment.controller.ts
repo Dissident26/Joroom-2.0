@@ -13,11 +13,11 @@ export class CommentController {
   @Get('/:id')
   @ApiOkResponse({ type: CommentDto })
   findOne(@Param('id') id: string): Promise<Comment | null> {
-    return this.commentService.findOne(parseInt(id));
+    return this.commentService.findOne(Number(id));
   }
 
   @Delete('/:id')
   delete(@Param('id') id: string): Promise<void> {
-    return this.commentService.delete(parseInt(id));
+    return this.commentService.delete(Number(id));
   }
 }

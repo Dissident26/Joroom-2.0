@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import * as session from 'express-session';
 
 import { AppModule } from './app.module';
 import { applySwagger } from './config/swagger.config';
@@ -8,6 +9,18 @@ async function bootstrap() {
 
   applySwagger(app);
 
-  await app.listen(parseInt(process.env.APP_PORT || ''));
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET!,
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        secure: true,
+        maxAge: Number(process.env.SESSION_MAX_AGE),
+      },
+    }),
+  );
+
+  await app.listen(Number(process.env.APP_PORT));
 }
 bootstrap();

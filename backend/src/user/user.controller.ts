@@ -19,23 +19,23 @@ export class UserController {
   @Get('/:id')
   @ApiOkResponse({ type: UserDto })
   findOne(@Param('id') id: string): Promise<User | null> {
-    return this.userService.findOne(parseInt(id));
+    return this.userService.findOne(Number(id));
   }
 
   @Delete('/:id')
   async delete(@Param('id') id: string): Promise<void> {
-    await this.userService.delete(parseInt(id));
+    await this.userService.delete(Number(id));
   }
 
   @Get('/:id/posts')
   @ApiOkResponse({ type: PostDto, isArray: true })
   findAllPostsByUserId(@Param('id') id: string): Promise<Post[] | null> {
-    return this.userService.findAllPostsByUserId(parseInt(id));
+    return this.userService.findAllPostsByUserId(Number(id));
   }
 
   @Get('/:id/comments')
   @ApiOkResponse({ type: CommentDto, isArray: true })
   findAllCommentsByUserId(@Param('id') id: string): Promise<Comment[] | null> {
-    return this.userService.findAllCommentsByUserId(parseInt(id));
+    return this.userService.findAllCommentsByUserId(Number(id));
   }
 }

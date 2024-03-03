@@ -19,17 +19,17 @@ export class TagController {
   @Get('/:id') //TODO: revisit usefullness of this endpont
   @ApiOkResponse({ type: TagDto })
   findOne(@Param('id') id: string): Promise<Tag | null> {
-    return this.tagService.findOne(parseInt(id));
+    return this.tagService.findOne(Number(id));
   }
 
   @Get('/:id/post')
   @ApiOkResponse({ type: PostDto, isArray: true })
   findAllPostsByTagId(@Param('id') id: string): Promise<Post[]> {
-    return this.tagService.findAllPostsByTagId(parseInt(id));
+    return this.tagService.findAllPostsByTagId(Number(id));
   }
 
   @Delete('/:id')
   async delete(@Param('id') id: string): Promise<void> {
-    await this.tagService.delete(parseInt(id));
+    await this.tagService.delete(Number(id));
   }
 }
