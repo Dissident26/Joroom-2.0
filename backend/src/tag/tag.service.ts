@@ -30,8 +30,6 @@ export class TagService {
       relations: ['posts', 'posts.user', 'posts.tags', 'posts.comments', 'posts.comments.user'],
     });
 
-    console.log(tag);
-
     return tag?.posts || [];
   }
 }
