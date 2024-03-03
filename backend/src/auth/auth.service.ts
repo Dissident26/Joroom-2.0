@@ -4,5 +4,5 @@ import { Injectable } from '@nestjs/common';
 export class AuthService {
   async signUp() {}
   async signIn() {}
-  async logOut() {}
+  async signOut() {}
 }

@@ -16,8 +16,8 @@ export class AuthController {
   signIn() {
     this.authService.signIn();
   }
-  @Post('log-out')
-  logOut() {
-    this.authService.logOut();
+  @Post('sign-out')
+  signOut() {
+    this.authService.signOut();
   }
 }
