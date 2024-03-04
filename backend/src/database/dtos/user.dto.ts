@@ -10,7 +10,7 @@ export class UserDto {
 
   @ApiProperty({
     uniqueItems: true,
-    maxLength: 250,
+    maxLength: 50,
     type: String,
   })
   name: string;

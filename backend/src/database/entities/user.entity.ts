@@ -19,10 +19,10 @@ export class User {
   email: string;
 
   @Column()
-  imageUrl: string;
+  imageUrl: string | null;
 
   @Column('text')
-  description: string;
+  description: string | null;
 
   @Column()
   isActive: boolean;
