@@ -18,13 +18,21 @@ export class User {
   })
   email: string;
 
-  @Column()
+  @Column({
+    type: String,
+    nullable: true,
+  })
   imageUrl: string | null;
 
-  @Column('text')
+  @Column({
+    type: String,
+    nullable: true,
+  })
   description: string | null;
 
-  @Column()
+  @Column({
+    default: true,
+  })
   isActive: boolean;
 
   @OneToMany(() => Post, (post) => post.user)
