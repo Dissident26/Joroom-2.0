@@ -4,7 +4,8 @@ import * as connectMongoDBSession from 'connect-mongodb-session';
 const MongoDBStore = connectMongoDBSession(session);
 const store = new MongoDBStore({
   uri: process.env.MONGODB_CONNECTION_STRING!,
-  collection: 'sessions',
+  databaseName: process.env.MONGODB_DB_NAME,
+  collection: process.env.MONGODB_COLLECTION_NAME!,
   expires: 86400,
 });
 

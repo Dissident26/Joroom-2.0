@@ -19,7 +19,7 @@ export class AuthService {
   async signIn({ email, password }: SignInDto) {
     const hashedPassword = await hash(password, this.saltOrRounds);
     const user = await this.userService.findByEmail(email);
-    console.log(user);
+
     if (user) {
       const isPasswordCorrect = await this.verifyUser('user.password', hashedPassword);
 
