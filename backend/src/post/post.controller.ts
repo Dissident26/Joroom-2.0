@@ -1,10 +1,11 @@
-import { Get, Controller, Param, Delete } from '@nestjs/common';
+import { Get, Controller, Param, Delete, ClassSerializerInterceptor, UseInterceptors } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { PostService } from './post.service';
 import { Post, Comment } from '../database/entities';
 import { CommentDto, PostDto } from 'src/database/dtos';
 
+@UseInterceptors(ClassSerializerInterceptor)
 @ApiTags('Posts')
 @Controller('post')
 export class PostController {

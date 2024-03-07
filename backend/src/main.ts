@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import * as session from 'express-session';
+import * as passport from 'passport';
 
 import { AppModule } from './app.module';
 import { applySwagger } from './config/swagger.config';
@@ -11,6 +12,9 @@ async function bootstrap() {
   applySwagger(app);
 
   app.use(session(sessionConfig));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   await app.listen(Number(process.env.APP_PORT));
 }
