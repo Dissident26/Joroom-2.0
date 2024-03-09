@@ -9,22 +9,14 @@ import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 import { TagModule } from './tag/tag.module';
 import { AuthModule } from './auth/auth.module';
+import { typeOrmConfig } from './database/typeorm.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST || 'localhost',
-      port: Number(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      entities: [__dirname + '/database/entities/*.entity.{js,ts}'],
-      synchronize: true, //use only in dev mode
-    }),
+    TypeOrmModule.forRoot(typeOrmConfig),
     UserModule,
     PostModule,
     CommentModule,
