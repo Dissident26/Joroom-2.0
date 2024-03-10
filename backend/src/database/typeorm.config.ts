@@ -8,6 +8,7 @@ export const typeOrmConfig: DataSourceOptions = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  logging: 'all',
   entities: [__dirname + '/entities/*.entity.{js,ts}'],
   migrations: [__dirname + '/migrations/*.{js,ts}'],
   synchronize: false,
@@ -16,5 +17,3 @@ export const typeOrmConfig: DataSourceOptions = {
 const dataSource = new DataSource(typeOrmConfig);
 
 export default dataSource;
-
-//pnpm typeorm migration:generate -d src/database/typeorm.config.ts src/database/migrations/{migration_name} <= add migration
