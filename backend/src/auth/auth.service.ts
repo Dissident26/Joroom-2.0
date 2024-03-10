@@ -21,7 +21,7 @@ export class AuthService {
     const user = await this.userService.findByEmail(email);
 
     if (user) {
-      const isPasswordCorrect = await this.verifyUser('user.password', hashedPassword);
+      const isPasswordCorrect = await this.verifyUser(user.password, hashedPassword);
 
       if (isPasswordCorrect) {
         return user;
