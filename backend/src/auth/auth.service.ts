@@ -17,11 +17,10 @@ export class AuthService {
     return await this.userService.create({ name, email, password: hashedPassword });
   }
   async signIn({ email, password }: SignInDto) {
-    const hashedPassword = await hash(password, this.saltOrRounds);
     const user = await this.userService.findByEmail(email);
 
     if (user) {
-      const isPasswordCorrect = await this.verifyUser(user.password, hashedPassword);
+      const isPasswordCorrect = await this.verifyUser(password, user.password);
 
       if (isPasswordCorrect) {
         return user;
@@ -33,6 +32,7 @@ export class AuthService {
     // throw new NotFoundException();
   }
   async signOut(@Session() session: Record<string, any>, @Res() response: Response) {
+    console.log(session);
     session.cookie.expires = 0;
     //@ts-ignore
     await session.destroy((err) => {
