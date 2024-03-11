@@ -6,7 +6,7 @@ const store = new MongoDBStore({
   uri: process.env.MONGODB_CONNECTION_STRING!,
   databaseName: process.env.MONGODB_DB_NAME,
   collection: process.env.MONGODB_COLLECTION_NAME!,
-  expires: 86400,
+  expires: Number(process.env.SESSION_MAX_AGE),
 });
 
 export const sessionConfig: session.SessionOptions = {

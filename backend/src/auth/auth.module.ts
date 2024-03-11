@@ -8,7 +8,7 @@ import { LocalSerializer } from './local.serializer';
 import { LocalStrategy } from './local.strategy';
 
 @Module({
-  imports: [UserModule, PassportModule],
+  imports: [UserModule, PassportModule.register({ session: true })],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy, LocalSerializer],
 })
