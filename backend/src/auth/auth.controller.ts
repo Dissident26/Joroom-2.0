@@ -4,7 +4,7 @@ import { Response } from 'express';
 
 import { AuthService } from './auth.service';
 import { SignUpDto, SignInDto } from '../database/dtos';
-// import { SignInGuard } from './guards';
+import { LocalAuthGuard } from './guards';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -17,7 +17,7 @@ export class AuthController {
     this.authService.signUp(signUpData);
   }
   @Post('sign-in')
-  // @UseGuards(SignInGuard)
+  @UseGuards(LocalAuthGuard)
   signIn(@Body() signInData: SignInDto) {
     this.authService.signIn(signInData);
   }
