@@ -13,7 +13,6 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     });
   }
   async validate(email: string, password: string): Promise<User> {
-    //@ts-ignore
     return await this.authService.signIn({ email, password });
   }
 }

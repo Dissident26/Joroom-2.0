@@ -26,16 +26,16 @@ export class AuthService {
         return user;
       }
 
-      // throw new BadRequestException();
+      throw new BadRequestException();
     }
 
-    // throw new NotFoundException();
+    throw new NotFoundException();
   }
   async signOut(@Session() session: Record<string, any>, @Res() response: Response) {
     console.log(session);
     session.cookie.expires = 0;
-    //@ts-ignore
-    await session.destroy((err) => {
+
+    await session.destroy(() => {
       response.redirect('/');
     });
   }
