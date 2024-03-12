@@ -14,8 +14,9 @@ export const sessionConfig: session.SessionOptions = {
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true,
+    secure: false, //does not set a cookie if set to true
     maxAge: Number(process.env.SESSION_MAX_AGE),
+    httpOnly: true,
   },
   store,
 };

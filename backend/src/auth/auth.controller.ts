@@ -16,11 +16,13 @@ export class AuthController {
   signUp(@Body() signUpData: SignUpDto) {
     this.authService.signUp(signUpData);
   }
+
   @Post('sign-in')
   @UseGuards(LocalAuthGuard)
   signIn(@Body() signInData: SignInDto) {
     this.authService.signIn(signInData);
   }
+
   @Post('sign-out')
   signOut(@Session() session: Record<string, any>, @Res() response: Response) {
     this.authService.signOut(session, response);
