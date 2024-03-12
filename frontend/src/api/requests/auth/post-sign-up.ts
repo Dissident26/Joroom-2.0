@@ -1,7 +1,8 @@
 import { api } from '@/api';
+import { SignUpDto } from '@/types';
 
-export const postSignUp = async () => {
-  const { data } = await api.auth.signUp();
+export const postSignUp = async (signUpData: SignUpDto) => {
+  const { data } = await api.auth.signUp(signUpData);
 
   return data;
 };

@@ -22,7 +22,7 @@ export interface CommentDto {
 export interface UserDto {
   id: number;
   /**
-   * @maxLength 250
+   * @maxLength 50
    * @uniqueItems true
    */
   name: string;
@@ -52,6 +52,22 @@ export interface PostDto {
   comments: CommentDto[];
   /** @format date-time */
   created_at: string;
+}
+
+export interface SignUpDto {
+  /**
+   * @maxLength 50
+   * @uniqueItems true
+   */
+  name: string;
+  /** @uniqueItems true */
+  email: string;
+  password: string;
+}
+
+export interface SignInDto {
+  email: string;
+  password: string;
 }
 
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, HeadersDefaults, ResponseType } from 'axios';
@@ -434,10 +450,12 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @name SignUp
      * @request POST:/auth/sign-up
      */
-    signUp: (params: RequestParams = {}) =>
+    signUp: (data: SignUpDto, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/auth/sign-up`,
         method: 'POST',
+        body: data,
+        type: ContentType.Json,
         ...params,
       }),
 
@@ -448,10 +466,12 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @name SignIn
      * @request POST:/auth/sign-in
      */
-    signIn: (params: RequestParams = {}) =>
+    signIn: (data: SignInDto, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/auth/sign-in`,
         method: 'POST',
+        body: data,
+        type: ContentType.Json,
         ...params,
       }),
 
