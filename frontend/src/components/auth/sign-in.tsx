@@ -1,3 +1,5 @@
+'use client';
+
 import { postSignIn } from '@/api';
 import { SignInDto } from '@/types';
 import { FormEvent, useCallback, useState } from 'react';
@@ -14,6 +16,7 @@ export const SignIn = () => {
       e.preventDefault();
       ('use server');
       await postSignIn(formState);
+      alert('action');
     },
     [formState],
   );
