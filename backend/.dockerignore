@@ -13,6 +13,7 @@ test
 .env-example
 
 # Files not required for production
+**/*.spec.ts
 .eslintrc.js
 .prettierrc
 Dockerfile
