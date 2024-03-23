@@ -6,7 +6,7 @@ services:
       - backend/.env
     build:
       context: ./backend
-      dockerfile: ../build/Dockerfile
+      dockerfile: ./build/DockerFile
     ports:
       - "3000:3000"
     expose:
