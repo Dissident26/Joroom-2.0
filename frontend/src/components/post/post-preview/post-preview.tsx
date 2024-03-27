@@ -32,7 +32,7 @@ export const PostPreview = ({ post, isCommentsInitiallyVisible = false }: IPostP
       <p>{post.content}</p>
       <div className={styles.footer}>
         <ShowCommentsButton onClick={() => setIsCommentVisible((prev) => !prev)} isActive={isCommentsVisible} count={post.comments.length} />
-        <div>{new Date(post.created_at).toLocaleString()}</div>
+        <div suppressHydrationWarning>{new Date(post.created_at).toLocaleString()}</div>
         <Link href={routes.post.getById(post.id)}>{messages.link}</Link>
       </div>
       {isCommentsVisible && (
