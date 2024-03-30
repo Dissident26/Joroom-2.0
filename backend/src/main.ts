@@ -7,7 +7,12 @@ import { applySwagger } from './config/swagger.config';
 import { sessionConfig } from './config/auth.config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const app = await NestFactory.create(AppModule, {
+    cors: {
+      origin: true,
+      credentials: true,
+    },
+  });
 
   applySwagger(app);
 
