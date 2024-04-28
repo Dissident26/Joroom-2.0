@@ -2,8 +2,8 @@ import { Get, Controller, Param, Delete } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { TagService } from './tag.service';
-import { Post, Tag } from '../database/entities';
-import { PostDto, TagDto } from 'src/database/dtos';
+import { Post, Tag, PostDto, TagDto } from '../database';
+import { FindOneParams } from '../validation';
 
 @ApiTags('Tags')
 @Controller('tag')
@@ -18,18 +18,18 @@ export class TagController {
 
   @Get('/:id') //TODO: revisit usefullness of this endpont
   @ApiOkResponse({ type: TagDto })
-  findOne(@Param('id') id: string): Promise<Tag | null> {
+  findOne(@Param() { id }: FindOneParams): Promise<Tag | null> {
     return this.tagService.findOne(Number(id));
   }
 
   @Get('/:id/post')
   @ApiOkResponse({ type: PostDto, isArray: true })
-  findAllPostsByTagId(@Param('id') id: string): Promise<Post[]> {
+  findAllPostsByTagId(@Param() { id }: FindOneParams): Promise<Post[]> {
     return this.tagService.findAllPostsByTagId(Number(id));
   }
 
   @Delete('/:id')
-  async delete(@Param('id') id: string): Promise<void> {
+  async delete(@Param() { id }: FindOneParams): Promise<void> {
     await this.tagService.delete(Number(id));
   }
 }

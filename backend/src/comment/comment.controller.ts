@@ -2,8 +2,8 @@ import { Get, Delete, Controller, Param } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { CommentService } from './comment.service';
-import { Comment } from '../database/entities';
-import { CommentDto } from 'src/database/dtos';
+import { Comment, CommentDto } from '../database';
+import { FindOneParams } from '../validation';
 
 @ApiTags('Comments')
 @Controller('comment')
@@ -12,12 +12,12 @@ export class CommentController {
 
   @Get('/:id')
   @ApiOkResponse({ type: CommentDto })
-  findOne(@Param('id') id: string): Promise<Comment | null> {
+  findOne(@Param() { id }: FindOneParams): Promise<Comment | null> {
     return this.commentService.findOne(Number(id));
   }
 
   @Delete('/:id')
-  delete(@Param('id') id: string): Promise<void> {
+  delete(@Param() { id }: FindOneParams): Promise<void> {
     return this.commentService.delete(Number(id));
   }
 }

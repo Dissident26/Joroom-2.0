@@ -2,8 +2,8 @@ import { Get, Controller, Param, Delete, ClassSerializerInterceptor, UseIntercep
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { PostService } from './post.service';
-import { Post, Comment } from '../database/entities';
-import { CommentDto, PostDto } from 'src/database/dtos';
+import { Post, Comment, CommentDto, PostDto } from '../database';
+import { FindOneParams } from '../validation';
 
 @UseInterceptors(ClassSerializerInterceptor)
 @ApiTags('Posts')
@@ -19,18 +19,18 @@ export class PostController {
 
   @Get('/:id')
   @ApiOkResponse({ type: PostDto })
-  findOne(@Param('id') id: string): Promise<Post | null> {
+  findOne(@Param() { id }: FindOneParams): Promise<Post | null> {
     return this.postService.findOne(Number(id));
   }
 
   @Get('/:id/comments')
   @ApiOkResponse({ type: CommentDto, isArray: true })
-  findaAllById(@Param('id') id: string): Promise<Comment[]> {
+  findaAllById(@Param() { id }: FindOneParams): Promise<Comment[]> {
     return this.postService.findAllCommentsByPostId(Number(id));
   }
 
   @Delete('/:id')
-  async delete(@Param('id') id: string): Promise<void> {
+  async delete(@Param() { id }: FindOneParams): Promise<void> {
     return this.postService.delete(Number(id));
   }
 }
